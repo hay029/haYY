@@ -1,82 +1,64 @@
 #pragma warning(disable:4996)
 #include <stdio.h>
 
-int main(void)
-{
-	int opt;
-	double num1, num2;
-	double result;
+int main(void){
+	int num = 0;
+	
+	while (num < 5){
+		printf("Hello World!%d\n", num);
+		num++;
+	}
 
-	printf("1.덧셈 2.뺄셈 3.곱셈 4.나눗셈 \n");
-	printf("번호 선택? ");
-	scanf("%d", &opt);
+	printf("--------------------\n");
 
-	printf("두 개의 실수 입력: ");
-	scanf("%lf %lf", &num1, &num2);
+	int dan = 0, number = 1;
+	printf("몇 단? ");
+	scanf("%d", &dan);
 
-	if (opt == 1)
-		result = num1 + num2;
-	if (opt == 2)
-		result = num1 - num2;
-	if (opt == 3)
-		result = num1 * num2;
-	if (opt == 4)
-		result = num1 / num2; // 이렇게 적으면 if 적힌 거 전부 연산하게 됨 => 비효율적
+	while (number < 10){
+		printf("%d * %d = %d\n", dan, number, dan * number);
+		number++;
+	}
 
-	if (opt == 1)
-		result = num1 + num2;
-	else if (opt == 2)
-		result = num1 - num2;
-	else if (opt == 3)
-		result = num1 * num2;
-	else
-		result = num1 / num2; // 이러면 조건 만족되면 else 이후는 건너뜀
+	printf("---------------------\n");
 
-	printf("결과: %lf\n\n", result);
+	/*양의 정수 하나 입력 받은 다음 그 수만큼 3의 배수를 출력하는 프로그램 작성
+	5를 입력 받으면 3 6 9 12 15가 출력될 것*/
 
+	int a = 0, b = 0;
+	printf("양의 정수 하나 입력: ");
+	scanf("%d", &a);
 
+	while (b < a) {
+		b++;				// printf 다음에 이거 넣으면 3*b의 값이 0이 나오기 때문에 0 3 6 9 12 가 출력됨 printf 앞에 넣어야 함
+		printf("%d ", 3 * b);
+	}
 
-	/*
-	ex) 두 개의 정수를 입력받아 두 수의 차를 출력하기 (단, 무조건 큰 수에서 작은 수를 뺀 결과를 출력할 것)
-	*/
+	printf("\n---------------------\n");
 
-	int a, b, c;
+	/*사용자로부터 계속 정수 입력을 받아 그 값을 더하기. 사용자가 0을 누르면 입력된 정수의 합을 출력할 것*/
+	
+	int c = 1, sum = 0;
+	while (c != 0) {
+		printf("정수를 입력하세요. ");
+		scanf("%d", &c);
+		sum += c;
+	}
+	printf("%d\n", sum);	// while문 안에 적으면 반복문 돌아갈 때마다 이 문장 나오게 됨 while문 중괄호 닫고 나서 적기
 
-	printf("두 개의 정수를 입력하세요. ");
-	scanf("%d %d", &a, &b);
+	printf("--------------------\n");
 
-	if (a < b)
-		c = b - a;
-	else
-		c = a - b;
+	/*구구단 단수 입력 받아서 역순으로 출력하기*/
 
-	printf("뺄셈 결과: %d\n\n", c);
+	int dan2, num2 = 9;		// 역순이니까 변수에 넣을 수를 마지막 수로 지정
 
+	printf("몇 단? ");
+	scanf("%d", &dan2);
 
-	/*
-	ex2) 학생의 전체 평균점수에 대한 학점 출력하기
-	90점 이상이면 A, 80점 이상이면 B, 70점 이상이면 C, 60점 이상이면 D, 그 미만이면 F로 출력
-	국어, 영어, 수학 점수를 입력 받고 평균 구한 후 학점 출력할 것
-	*/
-
-	double k, e, m, avr; // 순서대로 국어 점수, 영어 점수, 수학 점수, 평균
-
-	printf("국어, 영어, 수학 점수를 차례로 입력하세요. ");
-	scanf("%lf %lf %lf", &k, &e, &m);
-
-	avr = (k + e + m) / 3.0;
-	printf("평균 점수는 %g입니다.\n", avr);
-
-	if (avr >= 90.0)
-		printf("학점은 A입니다.\n");
-	else if (avr >= 80.0)
-		printf("학점은 B입니다.\n");
-	else if (avr >= 70.0)
-		printf("학점은 C입니다.\n");
-	else if (avr >= 60.0)
-		printf("학점은 D입니다.\n");
-	else
-		printf("학점은 F입니다.\n\n");
+	while (num2 > 0) {
+		printf("%d * %d = %d\n", dan2, num2, dan2 * num2);
+		num2--;		// 후위증가로 구구단 출력했으니까 역순은 후위감소하면 됨
+	}
 
 	return 0;
 }
